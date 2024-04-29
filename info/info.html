@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Timo Anjala">
+    <link rel="icon" href="images/favicon.ico">
+    <title>Lightbox Overlay 2.01</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="info.css">
+    <link rel="stylesheet" href="../src/lbo.css">
+    <!-- Scripts -->
+    <script src="../src/lbo.js" defer></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <img src="images/lbo.svg" class="logo" alt="LBO logo">
+        <h1 class="title">LightBox Overlay 2</h1>
+        <p class="big-word">Version 2.01</p>
+        <a class="github-btn" href="https://gtihub.com/FakeManiGH/lightbox-overlay">VIEW IN GITHUB</a>
+        <a href="https://timoanjala.com" target="_blank"><img src="images/scripple-logo.png" alt="Timo Anjala Logo" class="ta-logo"></a>
+    </header>
+
+    
+   
+    <!-- Main Content -->
+    <main>
+        
+        <nav class="content-list">
+            <a href="#overview" class="btn">OVERVIEW</a>
+            <a href="#preview" class="btn">PREVIEW</a>
+            <a href="#setup" class="btn">SETUP</a>
+            <a href="#activation" class="btn">ACTIVATION</a>
+            <a href="#download" class="btn">DOWNLOAD FUNCTION</a>
+            <a href="#user_manual" class="btn">USER MANUAL</a>
+            <a href="#broser-support" class="btn">BROWSER SUPPORT</a>
+            <a href="#license" class="btn">LICENSE</a>
+            <a href="#help" class="btn">NEED HELP?</a>
+        </nav>
+
+        <!-- Content: Overview -->
+        <article id="overview" class="content-article">
+            <h2>Overview</h2>
+
+            <p>LightBox Overlay (LBO) is an “App" for creating image viewing layer on any webpage that supports JavaScript. LBO is designed to work with image galleries and single images.
+                This page provides all you need to know about LBO.</p>
+            
+            <p>&rightarrow; LightBox Overlay is <strong>RESPONSIVE</strong> and works on all display sizes (Desktop, Tablet, Mobile).</p>
+
+            <p>&rightarrow; LightBox Overlay is <strong>100% FREE "SOFTWARE"</strong> and is provided <strong>"AS IS"</strong> without any warranty. Read more about <a href="#license">License</a>.</p>
+        </article>
+
+        <hr>
+
+        <!-- Content: Preview -->
+        <article id="preview" class="content-article">
+            <h2>Preview</h2>
+
+            <p>LBO works for both single image and image gallery. Below you find example, how it works in both cases.</p>
+
+            <p class="bold-txt upper">Single Image:</p>
+
+            <img src="images/scenery-1.jpg" data-lbo alt="Fog Over Icy Archipelago">
+
+            <p><strong class="upper">Image Gallery</strong> (with download):</p>
+
+            <div class="img-gallery">
+                <img src="images/wildlife-1.jpg" data-lbo="wildlife" data-title="Roe Deer Resting on Field" data-download="yes" alt="Roe Deer Resting on Field">
+                <img src="images/wildlife-2.jpg" data-lbo="wildlife" data-title="Roe Deer in Snowy Field" data-download="yes" alt="Roe Deer in Snowy Field">
+                <img src="images/wildlife-3.jpg" data-lbo="wildlife" data-title="Lizzard on Wooden Pier" data-download="yes" alt="Lizzard on Wooden Pier">
+                <img src="images/wildlife-4.jpg" data-lbo="wildlife" data-title="Fox Starnding on a Hay Bale" data-download="no" alt="Fox Starnding on a Hay Bale">
+            </div>
+
+            <p><strong>NOTE:</strong> In this preview, download function will not work as it will works in web-browser.</p>
+        </article>
+
+        <hr>
+
+        <!-- Content: Setup -->
+        <article id="setup" class="content-article">
+            <h2>Setup</h2>
+
+            <ul class="setup-list">
+                <li>Download latest release of LBO in .zip -file from GitHub. <a href="https://github.com/FakeManiGH/lightbox-overlay/releases" target="_blank">GitHub releases here.</a></li>
+                <li>From the .zip -file, export <span class="box">lbo.css</span> and <span class="box">lbo.js</span> to your website project folder. You can also create subfolder.</li>
+                <li>When you have the files in right place, you can link them to your HTML document.
+                    
+                    <ul class="sub-setup">
+                        <li>Link the CSS file in <span class="box">&lt;head&gt;</span> section of your HTML document. Example:<br>
+                        <span class="box">&lt;<span class="blue">link</span> rel="<span class="orange">stylesheet</span>" href="<span class="orange">location/of/lbo.css</span>"&gt;</span></li>
+
+                        <li>JavaScript file can also be placed in <span class="box">&lt;head&gt;</span> section of HTML document with defer -attribute. Example:<br>
+                        <span class="box">&lt;<span class="blue">script</span> src="<span class="orange">location/of/lbo.js</span>" defer&gt;&lt;/<span class="blue">script</span>&gt;</span></li>
+                    </ul> 
+
+                </li>
+                <li>When you have both files successfully linked on your document. Move to Activation.</li>
+            </ul>
+        </article>
+
+        <hr>
+
+        <!-- Content: Activation -->
+        <article id="activation" class="content-article">
+            <h2>Activation</h2>
+            
+            <ul class="setup-list">
+                <li>To activate Lightbox Overlay script, you need some images on your HTML document. Add image(s).</li>
+                <li>Lightbox Overlay for a <strong>SINGLE IMAGE</strong> is activated by adding <span class="box">data-lbo</span> attribute to an image-element.<br><br>
+                    <span class="box">
+                        &lt;<span class="blue">img</span> src="<span class="orange">location/image.jpg</span>" <strong>data-lbo</strong> alt="<span class="orange">description</span>"&gt;
+                    </span>
+                </li>
+                <li>To create a <strong>IMAGE GALLERY</strong>, you need to give same <span class="box">data-lbo="gallery name"</span> to multiple images in your HTML document.<br><br>
+                    <span class="box">
+                        &lt;<span class="blue">img</span> src="<span class="orange">location/image1.jpg</span>" <strong>data-lbo="<span class="orange">gallery1</span>"</strong> alt="<span class="orange">description</span>"&gt;
+                    </span><br><br>
+                    <span class="box">
+                        &lt;<span class="blue">img</span> src="<span class="orange">location/image2.jpg</span>" <strong>data-lbo="<span class="orange">gallery1</span>"</strong> alt="<span class="orange">description</span>"&gt;
+                    </span><br><br>
+                    <span class="box">
+                        &lt;<span class="blue">img</span> src="<span class="orange">location/image3.jpg</span>" <strong>data-lbo="<span class="orange">gallery1</span>"</strong> alt="<span class="orange">description</span>"&gt;
+                    </span>
+                </li>
+                <li>To set title for your image inside LBO, add <span class="box">data-title="title here"</span> attribute to image element.<br><br>
+                    <span class="box">
+                        &lt;<span class="blue">img</span> src="<span class="orange">location/image.jpg</span>" data-lbo alt="<span class="orange">description</span>" <strong>data-title="<span class="orange">title Here</span>"</strong>&gt;
+                    </span>
+                
+                </li>
+                <li>Enjoy your Lightbox Overlay Gallery(s).</li>
+            </ul>
+        </article>
+
+        <hr>
+
+        <!-- Content: Download -->
+        <article id="download" class="content-article">
+            <h2>Download Function</h2>
+
+            <p>To setup download function, simply add <span class="box">data-download="yes"</span> attribute to an image-element.</p>
+
+            <p class="box">&lt;<span class="blue">img</span> src="<span class="orange">location/image.jpg</span>" data-lbo alt="<span class="orange">description</span>" <strong>data-download="<span class="orange">yes</span>"</strong>&gt;</p>
+        </article>
+
+        <hr>
+
+        <!-- Content: User Manual -->
+        <article id="user_manual" class="content-article">
+            <h2>User Manual</h2>
+
+            <ul class="disc-list">
+                <li>You can browse image galleries inside LBO by using <span class="box">Next</span> and <span class="box">Previous</span> buttons inside overlay, or by using <strong>SWIPE</strong> motion on mobile devices.</li>
+                <li>Lightbox Overlay can be closed by using <span class="box">X</span> button inside overlay or by pressing <span class="box">Backspace</span> or <span class="box">ESC</span>
+                    key on your keyboard. On mobile devices, swiping up closes overlay.</li>
+                <li>When you reach end of image gallery and try to click next image, screen will vibrate to indicate that there is no more images available. Same applies to start of gallery with previous button.</li>
+                <li>Images inside LBO can be viewed in Fullscreen-mode by pressing <span class="box">Fullscreen</span> -button. Image galleries can also be browsed in fullscreen-mode by using arrow keys on keyboard or by swiping on  mobile devices.</li>
+            </ul>
+        </article>
+
+        <hr>
+
+        <!-- Content: Browser Support -->
+        <article id="browser_support" class="content-article">
+            <h2>Browser Support</h2>
+
+            <p>Lightbox Overlay has been tested on 6 most popular browsers in 2024 and works correctly on all of them. 
+                Some older versions of these browsers might have outdated JavaScript and CSS decipher engine and Lightbox Overlay might not work as planned.</p>
+
+            <p class="bold-txt upper">Supported Browsers:</p>
+
+            <ul class="broser-list">
+                <li><a href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a></li>
+                <li><a href="https://www.mozilla.org/en-US/firefox" target="_blank">Mozilla Firefox</a> (Web/Mobile)</li>
+                <li><a href="https://www.google.com/intl/en_us/chrome/" target="_blank">Google Chrome</a> (Web/Mobile)</li>
+                <li><a href="https://www.opera.com/browsers" target="_blank">Opera</a></li>
+                <li><a href="https://www.apple.com/safari/" target="_blank">Safari</a> (Web/Mobile)</li>
+                <li><a href="https://www.samsung.com" target="_blank">Samsung Internet</a> (Mobile)</li>
+            </ul>
+        </article>
+
+        <hr>
+
+        <!-- Content: License -->
+        <article id="license" class="content-article">
+            <h2>License</h2>
+
+            <p>Lightbox Overlay is licensed under <a class="file" href="../LICENSE.txt">The MIT License</a>.</p>
+
+            <ul class="disc-list">
+                <li><strong>100% FREE</strong> - LightBox Overlay script is free to use in personal and commercial work.</li>
+                <li><strong>PROVIDED AS IS, NO WARRANTY</strong> - If you break something by using Lightbox Overlay script, there is no warranty. Read info-page carefully before implementing it to your project.</li>
+                <li><strong>ATTRIBUTION IS REQUIRED</strong> - There is copyright information embedded in <span class="box">.js</span> and <span class="box">.css</span> -files, which is not to be removed. Any user-facing tags are not necessary.</li>
+            </ul>
+        </article>
+
+        <hr>
+
+        <!-- Content: Need Help? -->
+        <article id="help" class="content-article">
+            <h2>Need Help?</h2>
+
+            <p>If you run into problem with Lightbox-Overlay script, follow these steps:</p>
+
+            <ul class="disc-list">
+                <li>Search Google and <a href="https://stackoverflow.com/" target="_blank">StackOverflow</a>, if someone has same issue with you.</li>
+                <li>If problem is unique, <a href="https://stackoverflow.com/questions/ask">Post a New Question</a> with LBO -tag.</li>
+            </ul>
+
+            <p><strong>! Github Issue reports are not to be used for posting personal support requests</strong></p>
+        </article>
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© FakeManiGH / Timo Anjala</p>
+    </footer>
+</body>
+</html>
