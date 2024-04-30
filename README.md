@@ -9,7 +9,6 @@
     <li>User Manual.</li>
     <li>Using Download -function.</li>
     <li>Browser support.</li>
-    <li>Known bugs.</li>
     <li>More information.</li>
 </ol>
 
