@@ -1,73 +1,90 @@
-<h1>LightBox Overlay 2 - LBO</h1>
-<h3>Version 2.01 by FakeMani</h3>
+# LightBox Overlay - LBOgeneral</h1>
 
-<h2>Contents:</h2>
+Lightbox Overlay (general) is modern and simple image lightbox for all code projects that use HTML elements or accept HTML attributes.
 
-<ol>
-    <li>What is LightBox Overlay (LBO)?</li>
-    <li>How to setup LBO?</li>
-    <li>User Manual.</li>
-    <li>Using Download -function.</li>
-    <li>Browser support.</li>
-    <li>More information.</li>
-</ol>
+![Lightbox preview image](lbo-preview-image.jpg "San Juan Mountains")
 
-<hr>
+## Contents
 
-<h4>1. What is LightBox Overlay?</h4>
+- [Overview](#overview)
+- [Setup](#setup)
+- [Activation](#activation)
+- [Image download](#image-download)
+- [License (MIT)](#license)
 
-LightBox Overlay (LBO) is an “App" for creating image viewing layer on any webpage that supports JavaScript. LBO is designed to work with image galleries and single images. It is an easy way to implement user friendly image browsing functionality on your web project.
 
-<hr>
 
-<h4>2. How to setup LBO?</h4>
+## Overview
 
-<ol>
-    <li>Setup LBO by downloading latest release of <b>lbo.css</b> and <b>lbo.js</b> files from GitHub.</li>
-    <li>Place both files on your webserver in htdocs or specific folder where your website files are located. You can also create subfolder.</li>
-    <li>Link both files to HTML document, where you wish to use lightbox Overlay for your images:<br>
-        - Add link to <b>lbo.css</b> file anywhere in <b>HEAD</b> section of HTML document.<br>
-        - Add link to <b>lbo.js</b> file anywhere in <b>HEAD</b> section of HTML document, with <b>defer -attribute</b>.</li>
-    <li>To activate LBO in HTML, simply add <b>data-lbo</b> -attribute on any image element you wish to view in LBO.<br>
-        - To create galleries with browsing, add same <b>data-lbo="gallery name"</b> -attribute value for multiple images.</li>
-    <li>To add <b>TITLE</b> on image displayed in LBO, add <b>data-title="your title"</b> -attribute on your image element.</li>
-    <li>Enjoy the overlay!</li>
-</ol>
+- **Build for:** All projects that use HTML elements, or work with HTML element attributes. Build with JavaScript version **ECMAScript 2023 (ES14)**
+    - **Tested on:** HTML, PHP, and JavaScript -projects.
+    - **DOM:** Built-in observer for DOM changes (new images).
+- **CSS Styling:** All styling is done inside **lbo.css** -file. Colors, sizes and animations are customizable.
+- **Responsive build:** LBOgeneral works on all display sizes from desktop to mobile.
+- **Functionality:** Images browsed inside LBO can be downloaded if downloading for image is been allocated. LBO also has build in fullscreen mode to browse images in fullscreen.
+- **Navigation:**
+    - **Mouse:** Use built-in buttons with mouse.
+    - **Keyboard:** LEFT and RIGHT arrows can be used for moving between images. ESC and BACKSPACE close the LBO.
+    - **Touchscreen:** Move between images by swiping left and right. Close LBO by swiping up on screen.
+- **Customization:** All styles are customizable from included CSS file. Functions are also customizable from JS file. No quick setups.
 
-<hr>
+## Setup
 
-<h4>3. User manual</h4>
+1. Download the latest version of **LBOgeneral** in ZIP-file from [GitHub](https://github.com/FakeManiGH/lightbox-overlay-general).
+2. Export **lbo.js** and **lbo.css** files from ./src folder to your project **htdocs** folder. You can also create subfolder.
+3. Link both files to your documents HEAD section:
+~~~HTML
+<link rel="stylesheet" href="location/of/lbo.css">
+<script src="location/of/lbo.js" defer></script>
+~~~
+4. Move to activiting LBO for your images.
 
-<ul>
-    <li>You can move <b>FORWARDS</b> and <b>BACKWARDS</b> inside LBO with buttons situated on the bottom of the overlay, or by swiping left or right on your mobile device.</li>
-    <li>To close the overlay, push the close button on top-right corner of LBO, or swipe up on your mobile device. You can also use <b>ESC</b> or <b>BACKSPACE</b> on your keyboard.</li>
-    <li>You can view images in fullscreen -mode by pressing the <b>FULLSCREEN</b> -button inside the overlay.</li>
-</ul>
+## Activation
 
-<hr>
+**For single image:**
 
-<h4>4. Using download -function</h4>
+~~~HTML
+<img src="image.jpg" data-title="image title" data-lbo>
+~~~
 
-You can allocate download function (button) for any image inside LBO, by adding <b>data-download="yes"</b> -attribute and value on your image element.
+**For image gallery:**
 
-<hr>
+~~~HTML
+<img src="image1.jpg" data-title="image1 title" data-lbo="gallery1">
+<img src="image2.jpg" data-title="image2 title" data-lbo="gallery1">
+<img src="image3.jpg" data-title="image3 title" data-lbo="gallery1">
+~~~
 
-<h4>5. Browser support</h4>
+> Remember to add **alt** -attribute for each image, for accessibility.
 
-Lightbox Overlay has been tested on 6 most popular browsers in 2024 and works correctly on all of them.
+## Image Download
 
-<ul>
-    <li>Microsoft Edge</li>
-    <li>Mozilla Firefox (Web/Mobile)</li>
-    <li>Google Chrome (Web/Mobile)</li>
-    <li>Opera</li>
-    <li>Safari (Web/Mobile)</li>
-    <li>Samsung Internet (Mobile)</li>
-</ul>
+Any image setup with LBO can be allocated to be downloaded by user. In LBO galleries you can allocate download for images of your choosing. Simply add **data-download="yes"** attribute for image element. Without this attribute, downloading for set image is disabled.
 
-<hr>
+~~~HTML
+<img src="image1.jpg" data-title="image1 title" data-lbo data-download="yes">
+~~~
 
-<h4>6. More information</h4>
+## License (MIT)
 
-Visit project webpage: https://www.timoanjala.com/projects/lightbox.html
+The MIT License
 
+Copyright (c) 2024 Timo Anjala
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

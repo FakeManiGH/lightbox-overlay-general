@@ -6,7 +6,6 @@
     box-sizing: border-box;
 }
 
-
 /* Style for lightbox Overlay */
 .lbo {
     display: flex;
@@ -28,16 +27,23 @@
     position: relative;
     height: 100%;
     width: 100%;
-    padding: 0 10px 0 10px;
+    padding: 0 15px 0 15px;
     object-fit: contain;
     user-select: none;
     pointer-events: none;
     margin: auto;
-    transform: scale(1);
     border-radius: 10px;
     z-index: 9998;
 }
 
+.fadeIn {
+    animation: fadeIn .5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
 
 /* Flex-container to keep 'image-data' and top buttons in place above the image */
 .lbo-topnav {
@@ -49,14 +55,14 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
-    padding: 7px 10px;
+    padding: 10px 15px;
     gap: 10px;
-    background-color: #11111190;
-}
+    background: #11111190;
 
-.lbo-topnav:hover {
-    background-color: #111111;
-    transition: all .3s ease;
+    &:hover {
+        background-color: #111111;
+        transition: background .3s ease;
+    }
 }
 
 /* Sets the color and font for all text elements */
@@ -89,11 +95,11 @@
     border: none;
     font-size: 1.5em;
     cursor: pointer;
-}
 
-.lbo-icon:hover {
-    color: #ff9900;
-    transition: all .3s ease;
+    &:hover {
+        color: #ff9900;
+        transition: color .3s ease;
+    }
 }
 
 /* Flex-container to keep 'image-data' and bottom buttons in place below the image */
@@ -106,16 +112,15 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
-    padding: 7px 10px;
+    padding: 10px 15px;
     gap: 10px;
-    background-color: #11111190;
-}
+    background: #11111190;
 
-.lbo-bottomnav:hover {
-    background-color: #111111;
-    transition: all .3s ease;
+    &:hover {
+        background: #111111;
+        transition: background .3s ease;
+    }
 }
-
 
 /* Class for shake animation, connected to .js file */
 .end-shake {animation: shake .15s ease-in-out;}
@@ -133,7 +138,7 @@
     80% { transform: translate(-1px, -1px) rotate(1deg); }
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
+}
 
 
 /* Media Sceen settings to make minor tweeks in different screen sizes */

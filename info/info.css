@@ -100,16 +100,16 @@ a:hover, a.active {
     border-radius: 5px;
     cursor: pointer;
     font-size: .9em;
-    color: #111;
+    color: #e6e6e6;
     font-family: system-ui, sans-serif;
     font-weight: bold;
-    background: #ff9900;
+    background: #111;
     text-decoration: none;
 }
 
 .btn:hover, .btn.active {
     color: #e6e6e6;
-    background: #ff4500;
+    background: #399c39;
 }
 
 .github-btn {
@@ -132,8 +132,8 @@ a:hover, a.active {
 }
 
 .github-btn:hover {
-    color: #ff9900;
-    border: 2px solid #ff9900;
+    color: #0668A3;
+    border: 2px solid #0668A3;
 }
 
 header {

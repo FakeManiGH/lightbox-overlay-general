@@ -31,25 +31,54 @@ const lboFullScreenIcon =
 </svg>`;
 
 
-// Function to handle images with the data-lbo attribute
+
+// HANDLE LBO IMAGES
+// Function to handle images with data-lbo attribute
 function handleLboImages(images) {
     images.forEach(image => {
         image.style.cursor = 'pointer';
         image.addEventListener('click', () => {
-            document.body.style.overflow = 'hidden';
-            createLigthbox(image);
+            createLightbox(image);
         });
     });
 }
 
-
 // Finds all images with the data-lbo attribute and calls the handleLboImages function
 const lboImages = document.querySelectorAll('img[data-lbo]');
+
+// Handle images that are already in the DOM
 handleLboImages(lboImages);
 
+// Listen for new images added to the DOM
+const LBOobserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) {
+                // Checks if the new node is an image
+                if (node.tagName === 'IMG' && node.hasAttribute('data-lbo')) {
+                    handleLboImages([node]);
+                }
+                // Checks if the new node contains images
+                const images = node.querySelectorAll('img[data-lbo]');
+                handleLboImages(images);
+            }
+        });
+    });
+});
 
+// Observes the body for changes
+LBOobserver.observe(document.body, {
+    childList: true,
+    subtree: true
+});
+
+
+// LIGHTBOX FUNCTIONALITY
 // Function to create the lightbox
-function createLigthbox(image) {
+function createLightbox(image) {
+
+    // Disable scrolling on the body
+    document.body.style.overflow = 'hidden';
 
     // Get the image src, data-lbo, alt and title
     const src = image.src;
@@ -65,7 +94,6 @@ function createLigthbox(image) {
     // Add a property to your lightbox element to keep track of the current index
     const currentIndex = lboGallery.indexOf(image);
 
-
     // CREATE THE LIGHTBOX
     const lbo = document.createElement('div');
     lbo.classList.add('lbo');
@@ -78,7 +106,7 @@ function createLigthbox(image) {
                     <button title="Close LBO" class="lbo-icon lbo-close">${lboCloseIcon}</button>
                 </nav>
             </div>
-            <img class="lbo-img" src="${src}" alt="${alt}">
+            <img class="lbo-img fadeIn" src="${src}" alt="${alt}">
             <div class="lbo-bottomnav">
                 <button title="Previous image in gallery" class="lbo-icon lbo-prev">${lboPrevIcon}</button>
                 <p class="lbo-txt lbo-index">${currentIndex + 1} of ${lboGallery.length}</p>
@@ -87,6 +115,10 @@ function createLigthbox(image) {
         `;
     document.body.appendChild(lbo);
 
+    // Remove the fadeIn class from image after 500ms
+    setTimeout(() => {
+        document.querySelector('.lbo-img').classList.remove('fadeIn');
+    }, 500);
 
     // DOWNLOAD BUTTON
     const lboDownload = document.querySelector('.lbo-download');
@@ -104,23 +136,12 @@ function createLigthbox(image) {
         lboDownload.style.display = 'none';
     }
 
-
     // CLOSING THE LIGHTBOX
     // Close the lightbox when clicking on the close button
     const lboClose = document.querySelector('.lbo-close');
     lboClose.addEventListener('click', () => {
-        document.body.style.overflow = 'auto';
-        lbo.remove();
+        closeLightbox();
     });
-
-    // Close the lightbox when pressing the "Escape" or "Backspace" key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' || e.key === 'Backspace') {
-            document.body.style.overflow = 'auto';
-            lbo.remove();
-        }
-    });
-
 
     // FULLSCREEN BUTTON
     const lboFullScreen = document.querySelector('.lbo-fullscreen');
@@ -132,47 +153,54 @@ function createLigthbox(image) {
         }
     });
 
-
-    // NAVIGATION BUTTONS / ACTIONS
+    // NAVIGATION
     // Hide Bottom Navigation if there is only one image in the gallery
     if (lboGallery.length === 1) {
         document.querySelector('.lbo-bottomnav').style.display = 'none';
     }
 
-    // Add event listeners to "Previous" button
+    // KEYBOARD NAVIGATION
+    
+    // Adds tabindex to the lightbox
+    lbo.setAttribute('tabindex', '0');
+    // Focuses on the lightbox when it's opened
+    lbo.focus();
+
+    // Adds event listeners to the lightbox
+    lbo.addEventListener('keydown', (e) => {
+
+        // Close the lightbox when pressing the Escape or Backspace key
+        if (e.key === 'Escape' || e.key === 'Backspace') {
+            closeLightbox();
+        }
+
+        // Move to the next image when pressing the Right Arrow key
+        if (e.key === 'ArrowRight') {
+            nextImage();
+        }
+
+        // Move to the previous image when pressing the Left Arrow key
+        if (e.key === 'ArrowLeft') {
+            prevImage();
+        }
+    });
+    
+
+    // MOUSE NAVIGATION
+    // Adds event listeners to "Previous" button
     const lboPrev = document.querySelector('.lbo-prev');
     lboPrev.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            document.body.style.overflow = 'hidden';
-            lbo.remove();
-            createLigthbox(lboGallery[currentIndex - 1]);
-        } else {
-            document.querySelector('.lbo-img').classList.add('end-shake');
-            setTimeout(()=> {
-                document.querySelector('.lbo-img').classList.remove('end-shake');
-            } ,300);
-        }
+        prevImage();
     });
 
-
-    // Add event listeners to "Next" button
+    // Adds event listeners to "Next" button
     const lboNext = document.querySelector('.lbo-next');
     lboNext.addEventListener('click', () => {
-        if (currentIndex < lboGallery.length - 1) {
-            document.body.style.overflow = 'hidden';
-            lbo.remove();
-            createLigthbox(lboGallery[currentIndex + 1]);
-        } else {
-            document.querySelector('.lbo-img').classList.add('end-shake');
-            setTimeout(()=> {
-                document.querySelector('.lbo-img').classList.remove('end-shake');
-            } ,300);
-        }
+        nextImage();
     });
 
-
-    // SWIPE FUNCTIONALITY
-    // Add swipe functionality to the lightbox (for mobile devices)
+    // SWIPE NAVIGATION
+    // Adds swipe functionality to the lightbox (for mobile devices)
     let startX;
     let endX;
     let startY;
@@ -187,38 +215,60 @@ function createLigthbox(image) {
         endX = e.changedTouches[0].clientX;
         endY = e.changedTouches[0].clientY;
 
-        // Swipe left to go to the next image
+        // Swipe left to next image
         if (startX - endX > 50) {
-            if (currentIndex < lboGallery.length - 1) {
-                document.body.style.overflow = 'hidden';
-                lbo.remove();
-                createLigthbox(lboGallery[currentIndex + 1]);
-            } else {
-                document.querySelector('.lbo-img').classList.add('end-shake');
-                setTimeout(()=> {
-                    document.querySelector('.lbo-img').classList.remove('end-shake');
-                } ,300);
-            }
+            nextImage();
         }
 
-        // Swipe right to go to the previous image
+        // Swipe right to previous image
         if (endX - startX > 50) {
-            if (currentIndex > 0) {
-                document.body.style.overflow = 'hidden';
-                lbo.remove();
-                createLigthbox(lboGallery[currentIndex - 1]);
-            } else {
-                document.querySelector('.lbo-img').classList.add('end-shake');
-                setTimeout(()=> {
-                    document.querySelector('.lbo-img').classList.remove('end-shake');
-                } ,300);
-            }
+            prevImage();
         }
 
         // Swipe up to close the lightbox
         if (startY - endY > 50) {
-            document.body.style.overflow = 'auto';
-            lbo.remove();
+            closeLightbox();
         }
     });
+
+
+
+    // FUNCTIONS FOR NAVIGATION
+    // Function to close the lightbox
+    function closeLightbox() { 
+        if (lbo) {
+            document.body.style.overflow = 'auto';
+            lbo.remove()
+        }
+    }
+
+    // NEXT IMAGE
+    // Function to move into next image
+    function nextImage() {
+        if (currentIndex < lboGallery.length - 1) {
+            let nextIndex = currentIndex + 1;
+            closeLightbox();
+            createLightbox(lboGallery[nextIndex]);
+        } else {
+            document.querySelector('.lbo-img').classList.add('end-shake');
+            setTimeout(()=> {
+                document.querySelector('.lbo-img').classList.remove('end-shake');
+            } ,300);
+        }
+    }
+
+    // PREVIOUS IMAGE
+    // Function to move into previous image
+    function prevImage() {
+        if (currentIndex > 0) {
+            let prevIndex = currentIndex - 1;
+            closeLightbox();
+            createLightbox(lboGallery[prevIndex]);
+        } else {
+            document.querySelector('.lbo-img').classList.add('end-shake');
+            setTimeout(()=> {
+                document.querySelector('.lbo-img').classList.remove('end-shake');
+            } ,300);
+        }
+    }
 }
