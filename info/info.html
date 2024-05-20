@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Timo Anjala">
     <link rel="icon" href="images/favicon.ico">
-    <title>Lightbox Overlay 2.01</title>
+    <title>Lightbox Overlay - info</title>
     <!-- Styles -->
     <link rel="stylesheet" href="info.css">
     <link rel="stylesheet" href="../src/lbo.css">
@@ -18,8 +18,8 @@
     <!-- Header -->
     <header>
         <img src="images/lbo.svg" class="logo" alt="LBO logo">
-        <h1 class="title">LightBox Overlay 2</h1>
-        <p class="big-word">Version 2.01</p>
+        <h1 class="title">LightBox Overlay</h1>
+        <h3> General - Version 2.1.0</h3>
         <a class="github-btn" href="https://gtihub.com/FakeManiGH/lightbox-overlay">VIEW IN GITHUB</a>
         <a href="https://timoanjala.com" target="_blank"><img src="images/scripple-logo.png" alt="Timo Anjala Logo" class="ta-logo"></a>
     </header>
@@ -34,8 +34,8 @@
             <a href="#preview" class="btn">PREVIEW</a>
             <a href="#setup" class="btn">SETUP</a>
             <a href="#activation" class="btn">ACTIVATION</a>
-            <a href="#download" class="btn">DOWNLOAD FUNCTION</a>
-            <a href="#user_manual" class="btn">USER MANUAL</a>
+            <a href="#download" class="btn">IMAGE DOWNLOAD</a>
+            <a href="#navigation" class="btn">NAVIGATION</a>
             <a href="#broser-support" class="btn">BROWSER SUPPORT</a>
             <a href="#license" class="btn">LICENSE</a>
             <a href="#help" class="btn">NEED HELP?</a>
@@ -45,12 +45,23 @@
         <article id="overview" class="content-article">
             <h2>Overview</h2>
 
-            <p>LightBox Overlay (LBO) is an “App" for creating image viewing layer on any webpage that supports JavaScript. LBO is designed to work with image galleries and single images.
-                This page provides all you need to know about LBO.</p>
-            
-            <p>&rightarrow; LightBox Overlay is <strong>RESPONSIVE</strong> and works on all display sizes (Desktop, Tablet, Mobile).</p>
+            <p>LBOgeneral is simple and modern lightbox for all code projects that use HTML elements or accepts HTML attributes. E.g. HTML, PHP, JavaScript.</p>
 
-            <p>&rightarrow; LightBox Overlay is <strong>100% FREE "SOFTWARE"</strong> and is provided <strong>"AS IS"</strong> without any warranty. Read more about <a href="#license">License</a>.</p>
+            <ul class="compact-list">
+                <li><strong>Build for:</strong> All projects that use HTML elements, or accepts HTML element attributes. Build with JavaScript version ECMAScript 2023 (ES14).</li>
+                <li><strong>Responsive:</strong> LBOgeneral works on all display sizes from desktop to mobile. Built-in <strong>DOM listener</strong>, looking for DOM changes (new images).</strong></li>
+                <li><strong>Functionality:</strong> 
+                    <ul class="sub-list">
+                        <li>Single Image Lightbox</li>
+                        <li>Image Gallery Lightbox</li>
+                        <li>Image Download Function</li>
+                        <li>Fullscreen Mode</li>
+                    </ul>
+                </li>
+                <li><strong>Browser Support:</strong> LBOgeneral works on all modern browsers and mobile devices.</li>
+                <li><strong>License:</strong> LBOgeneral is licensed under <a href="#license">The MIT License</a>.</li>
+                <li><strong>Customization:</strong> All styles are customizable from included CSS file. Functions are also customizable from JS file. No quick setups.</li>
+            </ul>
         </article>
 
         <hr>
@@ -59,7 +70,7 @@
         <article id="preview" class="content-article">
             <h2>Preview</h2>
 
-            <p>LBO works for both single image and image gallery. Below you find example, how it works in both cases.</p>
+            <p>LBOgeneral works for both single image, and image gallery.</p>
 
             <p class="bold-txt upper">Single Image:</p>
 
@@ -139,7 +150,7 @@
 
         <!-- Content: Download -->
         <article id="download" class="content-article">
-            <h2>Download Function</h2>
+            <h2>Image Download</h2>
 
             <p>To setup download function, simply add <span class="box">data-download="yes"</span> attribute to an image-element.</p>
 
@@ -149,15 +160,13 @@
         <hr>
 
         <!-- Content: User Manual -->
-        <article id="user_manual" class="content-article">
-            <h2>User Manual</h2>
+        <article id="NAVIGATION" class="content-article">
+            <h2>Navigation</h2>
 
             <ul class="disc-list">
-                <li>You can browse image galleries inside LBO by using <span class="box">Next</span> and <span class="box">Previous</span> buttons inside overlay, or by using <strong>SWIPE</strong> motion on mobile devices.</li>
-                <li>Lightbox Overlay can be closed by using <span class="box">X</span> button inside overlay or by pressing <span class="box">Backspace</span> or <span class="box">ESC</span>
-                    key on your keyboard. On mobile devices, swiping up closes overlay.</li>
-                <li>When you reach end of image gallery and try to click next image, screen will vibrate to indicate that there is no more images available. Same applies to start of gallery with previous button.</li>
-                <li>Images inside LBO can be viewed in Fullscreen-mode by pressing <span class="box">Fullscreen</span> -button. Image galleries can also be browsed in fullscreen-mode by using arrow keys on keyboard or by swiping on  mobile devices.</li>
+                <li><strong>Mouse:</strong> Use built-in buttons inside LBO to navigate.</li>
+                <li><strong>Keyboard:</strong> Use <strong class="box">&ShortLeftArrow;</strong> and <strong class="box">&rightarrow;</strong> arrow keys to navigate between images. <span class="box">Backspace</span> and <span class="box">Esc</span> close lightbox.</li>
+                <li><strong>Touch:</strong> Swipe left and right to navigate between images. Swipe up to close LBO.</li>
             </ul>
         </article>
 
@@ -172,7 +181,7 @@
 
             <p class="bold-txt upper">Supported Browsers:</p>
 
-            <ul class="broser-list">
+            <ul class="compact-list">
                 <li><a href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a></li>
                 <li><a href="https://www.mozilla.org/en-US/firefox" target="_blank">Mozilla Firefox</a> (Web/Mobile)</li>
                 <li><a href="https://www.google.com/intl/en_us/chrome/" target="_blank">Google Chrome</a> (Web/Mobile)</li>

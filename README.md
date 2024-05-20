@@ -1,6 +1,8 @@
 # LightBox Overlay - LBOgeneral</h1>
 
-Lightbox Overlay (general) is modern and simple image lightbox for all code projects that use HTML elements or accept HTML attributes.
+Lightbox Overlay - General is modern and simple image lightbox for all code projects that use HTML elements or accept HTML attributes.
+
+For **React Projects**, use [LBOreact](#https://github.com/FakeManiGH/lightbox-overlay-react).
 
 ![Lightbox preview image](lbo-preview-image.jpg "San Juan Mountains")
 
@@ -20,7 +22,7 @@ Lightbox Overlay (general) is modern and simple image lightbox for all code proj
     - **Tested on:** HTML, PHP, and JavaScript -projects.
     - **DOM:** Built-in observer for DOM changes (new images).
 - **CSS Styling:** All styling is done inside **lbo.css** -file. Colors, sizes and animations are customizable.
-- **Responsive build:** LBOgeneral works on all display sizes from desktop to mobile.
+- **Responsive build:** LBOgeneral works on all display sizes from desktop to mobile. Detects new images.
 - **Functionality:** Images browsed inside LBO can be downloaded if downloading for image is been allocated. LBO also has build in fullscreen mode to browse images in fullscreen.
 - **Navigation:**
     - **Mouse:** Use built-in buttons with mouse.

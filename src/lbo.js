@@ -1,3 +1,14 @@
+// LightBox Overlay - LBOgeneral
+// Version: 2.1.0
+// Author: Timo Anjala
+// Description: A simple and modern lightbox overlay for images.
+// Dependencies: None
+// Website: https://timoanjala.com/LBOgeneral
+// GitHub: https://github.com/FakeManiGH/lightbox-overlay-general
+// License: MIT
+
+
+// Code starts here...
 
 // LBO NAVIGATION ICONS
 // Close icon

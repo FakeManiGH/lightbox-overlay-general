@@ -252,7 +252,7 @@ footer {
     line-height: 1.8;
 }
 
-.broser-list {
+.compact-list {
     display: flex;
     flex-direction: column;
     gap: 0px;
@@ -272,6 +272,18 @@ footer {
     font-family: system-ui, sans-serif;
     font-weight: 400;
     line-height: 1.2;
+}
+
+.sub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    list-style: circle;
+    padding-left: 40px;
+    font-family: system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.2;
+
 }
 
 @media screen and (max-width: 800px) {
